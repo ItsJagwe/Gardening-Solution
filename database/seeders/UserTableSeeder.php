@@ -25,16 +25,6 @@ class UserTableSeeder extends Seeder
                 'role'=>  'admin',
                 'status'=> 'active',
             ],
-            //vendor
-            [
-                'full_name'=> 'Yash Vendor',
-                'username'=> 'Vendor',
-                'email'=> 'vendor@gmail.com',
-                'password'=> Hash::make('1111'),
-                'role'=>  'vendor',
-                'status'=> 'active',
-
-            ],
             //customer
             [
                 'full_name'=> 'Yash Customer',

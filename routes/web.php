@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Auth::routes(['register'=>true]);
+
+Route::get('/',[\App\Http\Controllers\HomeController::class,'index'])->name('home');
+
+//admin dashboard
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
+{
+    Route::get('/',[\App\Http\Controllers\AdminController::class,'admin'])->name('admin');
+
 });
-
-Auth::routes();
-
-    Route::get('/',[\App\Http\Controllers\admin::class,'dash'])->name('dash');

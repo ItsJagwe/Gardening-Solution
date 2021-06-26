@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class admin extends Controller
+class AdminController extends Controller
 {
-    public function dash()
+    public function admin()
     {
         return view('backend.layouts.master');
     }
