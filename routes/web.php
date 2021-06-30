@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
 {
     Route::get('/',[\App\Http\Controllers\AdminController::class,'admin'])->name('admin');
 
+//banner dashboard
+    Route::resource('/banner', \App\Http\Controllers\BannerController::class);
+    Route::get('delete/{id}',[BannerController::class,'destroy']);
 });

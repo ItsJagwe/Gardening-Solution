@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+use Illuminate\Support\Facades\DB;
 
 class BannerController extends Controller
 {
@@ -13,7 +16,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        $banners=Banner::orderBy('id','DESC')->get();
+        return view('backend.banner.index',compact('banners'));
     }
 
     /**
@@ -23,7 +27,8 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.banner.create');
+
     }
 
     /**
@@ -34,7 +39,28 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title' => 'string|required',
+            'description' => 'string|nullable',
+            'photo' => 'required',
+            'status' => 'nullable|in:active,inactive',
+        ]);
+        $data=$request->all();
+        $slug=Str::slug($request->input('title'));
+        $slug_count=Banner::where('slug',$slug)->count();
+        if($slug_count>0){
+            $slug = time().'-'.$slug;
+        }
+        $data['slug']=$slug;
+
+        $status=Banner::create($data);
+        if($status)
+        {
+            return redirect()->route('banner.index')->with('success','successfully created banner');
+        }
+        else{
+            return back()->with('error','something went wrong');
+        }
     }
 
     /**
@@ -56,7 +82,14 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $banner=Banner::find($id);
+        if($banner)
+        {
+            return view('backend.banner.edit',compact('banner'));
+        }
+        else{
+            return back()->with('error','Data not found');
+        }
     }
 
     /**
@@ -68,7 +101,29 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $banner=Banner::find($id);
+        if($banner)
+        {
+            $this->validate($request,[
+                'title' => 'string|required',
+                'description' => 'string|nullable',
+                'photo' => 'required',
+                'status' => 'nullable|in:active,inactive',
+            ]);
+            $data=$request->all();
+
+            $status=$banner->fill($data)->save();
+            if($status)
+            {
+                return redirect()->route('banner.index')->with('success','successfully Updated banner');
+            }
+            else{
+                return back()->with('error','something went wrong');
+            }
+        }
+        else{
+            return back()->with('error','Data not found');
+        }
     }
 
     /**
@@ -79,6 +134,8 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data=Banner::find($id);
+        $data->delete();
+        return redirect()->route('banner.index')->with('success delete','successfully deleted banner');
     }
 }

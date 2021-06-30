@@ -79,8 +79,11 @@
                 <!-- Topbar -->
                 @include('backend.layouts.nav')
                 <!-- End of Topbar -->
+                 <!-- Begin Page Content -->
+                @yield('content')
+                 <!-- End Page Content -->
                 @include('backend.layouts.footer')
-                <!-- Begin Page Content -->
+               
       
 
 </body>
