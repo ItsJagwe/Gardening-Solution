@@ -1,4 +1,4 @@
-@extends('backend.service.master')
+@extends('style.master')
 
 @section('content')
 <section style="padding-top:60px;">
