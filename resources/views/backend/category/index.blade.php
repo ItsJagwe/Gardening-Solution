@@ -1,4 +1,4 @@
-@extends('backend.banner.master')
+@extends('backend.category.master')
 
 @section('content')
 <section style="padding-top:60px;">
@@ -16,8 +16,8 @@
                     <div class="card-header">
                     <table class="table">
                         <tr>
-                            <th> Banners </th>
-                            <th><a href="/admin/banner/create" class="btn btn-primary">Add new Banner</a></th>
+                            <th> Categories </th>
+                            <th><a href="/admin/category/create" class="btn btn-primary">Add new Category</a></th>
                         
                         <!-- search  -->
                             <form action="#" method="get">
@@ -36,27 +36,27 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th>ID</th>
-                                    <th>Banner title</th>
-                                    <th>Banner description</th>
-                                    <th>Banner photo</th>
-                                    <th>Banner status</th>
+                                    <th>Category title</th>
+                                    <th>Category photo</th>
+                                    <th>Category price</th>
+                                    <th>Category status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
             
-                            @foreach($banners as $post)
+                            @foreach($categories as $post)
                             <tr>
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
-                                <td>{{$post->description}}</td>
-                                <td><img src="{{ $post->photo }}" alt="banner img" style="max-height: 90px; max-width:120px;"></td>
+                                <td><img src="{{ $post->photo }}" alt="category img" style="max-height: 90px; max-width:120px;"></td>
+                                <td>{{$post->price}}</td>
                                 <td>
                                     {{ $post->status }}
                                 </td>
                                 <td>
-                                    <a href="{{ route("banner.edit",$post->id) }}" class="float-left btn btn-success">Edit</a>
+                                    <a href="{{ route("category.edit",$post->id) }}" class="float-left btn btn-success">Edit</a>
                                     
-                                    <a href="{{ "bannerdelete/".$post['id'] }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ "categorydelete/".$post['id'] }}" class="btn btn-danger">Delete</a>
                                     
                                 </td>
                             </tr>
