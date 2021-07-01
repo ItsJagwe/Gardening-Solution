@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\DB;
 
-class CategoryController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::orderBy('id','DESC')->get();
-        return view('backend.category.index',compact('categories'));
+        $services=Service::orderBy('id','DESC')->get();
+        return view('backend.service.index',compact('services'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.category.create');
+        return view('backend.service.create');
     }
 
     /**
@@ -47,16 +47,16 @@ class CategoryController extends Controller
         ]);
         $data=$request->all();
         $slug=Str::slug($request->input('title'));
-        $slug_count=Category::where('slug',$slug)->count();
+        $slug_count=Service::where('slug',$slug)->count();
         if($slug_count>0){
             $slug = time().'-'.$slug;
         }
         $data['slug']=$slug;
 
-        $status=Category::create($data);
+        $status=Service::create($data);
         if($status)
         {
-            return redirect()->route('category.index')->with('success','successfully created banner');
+            return redirect()->route('service.index')->with('success','successfully created Service');
         }
         else{
             return back()->with('error','something went wrong');
@@ -82,10 +82,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categories=Category::find($id);
-        if($categories)
+        $services=Service::find($id);
+        if($services)
         {
-            return view('backend.category.edit',compact('categories'));
+            return view('backend.service.edit',compact('services'));
         }
         else{
             return back()->with('error','Data not found');
@@ -102,8 +102,8 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         
-        $category=Category::find($id);
-        if($category)
+        $service=Service::find($id);
+        if($service)
         {
         $this->validate($request,[
             'title' => 'string|required',
@@ -113,10 +113,10 @@ class CategoryController extends Controller
         ]);
         $data=$request->all();
 
-        $status=$category->fill($data)->save();
+        $status=$service->fill($data)->save();
         if($status)
         {
-            return redirect()->route('category.index')->with('success','successfully Updated Category');
+            return redirect()->route('service.index')->with('success','successfully Updated Service');
         }
         else{
             return back()->with('error','something went wrong');
@@ -135,8 +135,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $data=Category::find($id);
+        $data=Service::find($id);
         $data->delete();
-        return redirect()->route('category.index')->with('success delete','successfully deleted banner');
+        return redirect()->route('service.index')->with('success delete','successfully deleted service');
     }
 }

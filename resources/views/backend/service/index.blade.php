@@ -1,4 +1,4 @@
-@extends('backend.category.master')
+@extends('backend.service.master')
 
 @section('content')
 <section style="padding-top:60px;">
@@ -16,8 +16,8 @@
                     <div class="card-header">
                     <table class="table">
                         <tr>
-                            <th> Categories </th>
-                            <th><a href="/admin/category/create" class="btn btn-primary">Add new Category</a></th>
+                            <th> Services </th>
+                            <th><a href="/admin/service/create" class="btn btn-primary">Add new Service</a></th>
                         
                         <!-- search  -->
                             <form action="#" method="get">
@@ -36,27 +36,27 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th>ID</th>
-                                    <th>Category title</th>
-                                    <th>Category photo</th>
-                                    <th>Category price</th>
-                                    <th>Category status</th>
+                                    <th>Service title</th>
+                                    <th>Service photo</th>
+                                    <th>Service price</th>
+                                    <th>Service status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
             
-                            @foreach($categories as $post)
+                            @foreach($services as $post)
                             <tr>
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
-                                <td><img src="{{ $post->photo }}" alt="category img" style="max-height: 90px; max-width:120px;"></td>
+                                <td><img src="{{ $post->photo }}" alt="service img" style="max-height: 90px; max-width:120px;"></td>
                                 <td>{{$post->price}}</td>
                                 <td>
                                     {{ $post->status }}
                                 </td>
                                 <td>
-                                    <a href="{{ route("category.edit",$post->id) }}" class="float-left btn btn-success">Edit</a>
+                                    <a href="{{ route("service.edit",$post->id) }}" class="float-left btn btn-success">Edit</a>
                                     
-                                    <a href="{{ "categorydelete/".$post['id'] }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ "servicedelete/".$post['id'] }}" class="btn btn-danger">Delete</a>
                                     
                                 </td>
                             </tr>

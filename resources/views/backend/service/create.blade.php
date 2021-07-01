@@ -20,36 +20,36 @@
                                 </div>     
                                 @endif
                             </div>
-                            <form action="{{ route('category.store') }}" method="post">
+                            <form action="{{ route('service.store') }}" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="title">Category Title</label>
-                                    <input type="text" name="title" class="form-control" placeholder="Enter Category title"value="{{ old('title') }}"/>
+                                    <label for="title">Service Title</label>
+                                    <input type="text" name="title" class="form-control" placeholder="Enter Service title"value="{{ old('title') }}"/>
 
                                 </div>
                             <br>
                                 <div class="form-group">
-                                    <label for="description">Category Image</label>
+                                    <label for="description">Service Image</label>
                                     <div class="input-group">
                                         <input class="form-control" type="file" name="photo" multiple />
                                     </div>
                                     <img id="holder" style="margin-top:15px;max-height:100px;">
                                 </div>
                                 <div class="form-group">
-                                    <label for="price">Category Price</label>
+                                    <label for="price">Service Price</label>
                                     <input name="price" placeholder="Write the price here..." class="form-control" id="" cols="2" rows="1"></input>
                                 </div>
                             <br>
                                 <div class="form-group">
-                                    <label for="status">Category Status</label>
+                                    <label for="status">Service Status</label>
                                     <select name="status" class="form-control show-trick ">
-                                        <option value="">--Category status list--</option>
+                                        <option value="">--Service status list--</option>
                                         <option value="active" {{ old('status')=='active' ? 'selected' : '' }}>Active</option>
                                         <option value="inactive" {{ old('status')=='inactive' ? 'selected' : '' }}>InActive</option>
                                     </select>
                                 </div>
                             <br>
-                                <button type="submit" class="btn btn-success">Add Category</button>
+                                <button type="submit" class="btn btn-success">Add Service</button>
 
                             </form>
                         </div>

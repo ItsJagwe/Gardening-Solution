@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BannerController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +30,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
     Route::get('bannerdelete/{id}',[BannerController::class,'destroy']);
 
 //category dashboard
-    Route::resource('/category', \App\Http\Controllers\CategoryController::class);
-    Route::get('categorydelete/{id}',[CategoryController::class,'destroy']);
+    Route::resource('/service', \App\Http\Controllers\ServiceController::class);
+    Route::get('servicedelete/{id}',[ServiceController::class,'destroy']);
 });

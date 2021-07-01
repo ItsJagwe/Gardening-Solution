@@ -1,4 +1,4 @@
-@extends('backend.category.master')
+@extends('backend.service.master')
   
   @section('content')
     <section style="padding-top:60px;">
@@ -20,25 +20,25 @@
                                 </div>     
                                 @endif
                             </div>
-                            <form action="{{ route('category.update',$categories->id) }}" method="post">
+                            <form action="{{ route('service.update',$services->id) }}" method="post">
                                 @csrf
                                 @method('patch')
                                 <div class="form-group">
-                                    <label for="title">Category Title</label>
-                                    <input type="text" name="title" class="form-control" placeholder="Enter Category title" value="{{ $categories->title }}"/>
+                                    <label for="title">Service Title</label>
+                                    <input type="text" name="title" class="form-control" placeholder="Enter Service title" value="{{ $services->title }}"/>
 
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <label for="price">Category Price</label>
-                                    <input name="price" placeholder="Write the price here..." class="form-control"  id="" cols="2" rows="1">{{ $categories->price }}</input>
+                                    <label for="price">Service Price</label>
+                                    <input name="price" placeholder="Write the price here..." class="form-control" value="{{ $services->price }}" id="" cols="2" rows="1"></input>
                                 </div>
                                 <br>
 
                                 <div class="form-group">
-                                    <label for="description">Category Image</label>
+                                    <label for="description">Service Image</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="file" name="photo" value="{{ $categories->photo }}" multiple />
+                                        <input class="form-control" type="file" name="photo" value="{{ $services->photo }}" multiple />
                                     </div>
                                     <img id="holder" style="margin-top:15px;max-height:100px;">
                                 </div>
@@ -46,14 +46,14 @@
                                 <br>
 
                                 <div class="form-group">
-                                    <label for="status">Category Status</label>
+                                    <label for="status">Service Status</label>
                                     <select name="status" class="form-control show-trick ">
-                                        <option value="active" {{ $categories->status=='active' ? 'selected' : '' }}>Active</option>
-                                        <option value="inactive" {{ $categories->status=='inactive' ? 'selected' : '' }}>InActive</option>
+                                        <option value="active" {{ $services->status=='active' ? 'selected' : '' }}>Active</option>
+                                        <option value="inactive" {{ $services->status=='inactive' ? 'selected' : '' }}>InActive</option>
                                     </select>
                                 </div>
                                 <br>
-                                <button type="submit" class="btn btn-success">Update Category</button>
+                                <button type="submit" class="btn btn-success">Update Service</button>
                                 
                             </form>
                         </div>
