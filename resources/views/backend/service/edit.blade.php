@@ -20,7 +20,7 @@
                                 </div>     
                                 @endif
                             </div>
-                            <form action="{{ route('service.update',$services->id) }}" method="post">
+                            <form action="{{ route('service.update',$services->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
                                 <div class="form-group">

@@ -41,11 +41,15 @@ class ServiceController extends Controller
     {
         $this->validate($request,[
             'title' => 'string|required',
-            'photo' => 'required',
+            'photo' =>  'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'price' => 'required',
             'status' => 'nullable|in:active,inactive',
         ]);
         $data=$request->all();
+        $name = $request->file('photo')->getClientOriginalName();
+        $photo=$request->photo->move(public_path('photos'), $name);
+        $data['photo']=$name;
+
         $slug=Str::slug($request->input('title'));
         $slug_count=Service::where('slug',$slug)->count();
         if($slug_count>0){
@@ -107,12 +111,15 @@ class ServiceController extends Controller
         {
         $this->validate($request,[
             'title' => 'string|required',
-            'photo' => 'required',
+            'photo' =>  'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'price' => 'required',
             'status' => 'nullable|in:active,inactive',
         ]);
         $data=$request->all();
-
+        $name = $request->file('photo')->getClientOriginalName();
+        $photo=$request->photo->move(public_path('photos'), $name);
+        $data['photo']=$name;
+        
         $status=$service->fill($data)->save();
         if($status)
         {

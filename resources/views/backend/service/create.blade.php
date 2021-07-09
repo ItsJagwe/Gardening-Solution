@@ -20,8 +20,8 @@
                                 </div>     
                                 @endif
                             </div>
-                            <form action="{{ route('service.store') }}" method="post">
-                                @csrf
+                            <form action="{{ route('service.store') }}" method="post" enctype="multipart/form-data">      
+                                @csrf         
                                 <div class="form-group">
                                     <label for="title">Service Title</label>
                                     <input type="text" name="title" class="form-control" placeholder="Enter Service title"value="{{ old('title') }}"/>
