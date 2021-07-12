@@ -25,48 +25,71 @@
 <body>
 
     
-      <!-- Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
-        <div class="container-fluid ">
-          <a class="navbar-brand" href="/index">Gardening Solution</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href= "/index">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page"href="/services">Services</a>
-              </li>
-              
-            </ul>
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Profile
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
-                  <li><a class="dropdown-item" href="order.html">Orders</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about" tabindex="-1" >About Us </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
+   <!-- Navbar-->
+   <nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
+    <div class="container-fluid ">
+      <a class="navbar-brand" href="/index">Gardening Solution</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href= "/index">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/services">Services</a>
+          </li>
+          
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Profile
+            </a>
+            
+              @auth
     
+    
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="order.html">Orders</a></li>
+                <li>
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                   {{ __('Logout') }}
+               </a>
+  
+               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                   @csrf
+               </form>
+              </li>
+              </ul>
+            </li>
+           
+              @else
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{{ 'user/auth' }}">Login & Register</a></li>
+              </ul>
+              @endauth
+          </li>
+    
+            
+          <li class="nav-item">
+            <a class="nav-link" href="/about" tabindex="-1" >About Us </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
     <!--main content--> 
   <div class="aboutus-area">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-6">
           <div class="aboutus-content ">
-            <h1>AboutUs</h1>
+            <h1>About <span>Gardening Solution</span></h1>
             <h4>Company Details</h4>
             <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has oots in a piece of
               classitin literature from 45 BC, making it over 2000 years old. Richard McClint professor at Hamden

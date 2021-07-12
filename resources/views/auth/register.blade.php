@@ -20,29 +20,35 @@
 					<div class="card shadow-lg">
 						<div class="card-body p-5">
 							<h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
-							<form method="POST" class="needs-validation" novalidate="" autocomplete="off">
+							<form  action="{{route('register.submit')}}" method="POST" class="needs-validation" novalidate="" autocomplete="off">
+								{{ csrf_field() }}
 								<div class="mb-3">
 									<label class="mb-2 text-muted" for="name">Name</label>
-									<input id="name" type="text" class="form-control" name="name" value="" required autofocus>
-									<div class="invalid-feedback">
-										Name is required	
-									</div>
+									<input id="name" type="text" class="form-control" name="full_name" value="{{old('full_name')}}" required autofocus>
+									@error('full_name')
+									<p class="text-danger">{{$message}}</p>
+								  @enderror
 								</div>
 
 								<div class="mb-3">
 									<label class="mb-2 text-muted" for="email">E-Mail Address</label>
-									<input id="email" type="email" class="form-control" name="email" value="" required>
-									<div class="invalid-feedback">
-										Email is invalid
-									</div>
+									<input id="email" type="email" class="form-control" name="email" value="{{old('email')}}" required>
+									@error('email')
+									<p class="text-danger">{{$message}}</p>
+								  @enderror
 								</div>
 
 								<div class="mb-3">
 									<label class="mb-2 text-muted" for="password">Password</label>
 									<input id="password" type="password" class="form-control" name="password" required>
-								    <div class="invalid-feedback">
-								    	Password is required
-							    	</div>
+								   @error('password')
+									<p class="text-danger">{{$message}}</p>
+								  @enderror
+								</div>
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="password">Confirm Password</label>
+									<input id="password" type="password" class="form-control" name="password_confirmation" required>
+								  
 								</div>
 
 								<p class="form-text text-muted mb-3">
@@ -58,7 +64,7 @@
 						</div>
 						<div class="card-footer py-3 border-0">
 							<div class="text-center">
-								@if (Route::has('register'))
+								@if (Route::has('login'))
 									Already have an account?  <a class="text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
                             @endif
 							</div>

@@ -27,8 +27,14 @@ Auth::routes(['register'=>true]);
 Route::get('/',[\App\Http\Controllers\HomeController::class,'index'])->name('home');
 
 
+//authentication
+Route::get('user/auth',[\App\Http\Controllers\Frontend\UserController::class,'userAuth'])->name('user.auth');
+
+//register
+Route::post('user/register',[App\Http\Controllers\Frontend\IndexController::class,'registerSubmit'])->name('register.submit');
+
 //admin dashboard
-Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
+Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function()
 {
     Route::get('/',[\App\Http\Controllers\AdminController::class,'admin'])->name('admin');
 
@@ -37,9 +43,15 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function()
     Route::get('servicedelete/{id}',[ServiceController::class,'destroy']);
 });
 
+Route::group(['prefix'=>'customer','middleware'=>'auth','customer'],function()
+{
+    Route::get('/',[\App\Http\Controllers\AdminController::class,'customer'])->name('customer');
+});
+
 
 //frontend
 Route::get('/index',[\App\Http\Controllers\Frontend\IndexController::class,'index'])->name('index');
 Route::get('/services',[\App\Http\Controllers\Frontend\ServicesController::class,'show'])->name('show');
-Route::get('/user',[\App\Http\Controllers\Frontend\UserController::class,'display'])->name('display');
+
 Route::get('/about',[\App\Http\Controllers\Frontend\AboutController::class,'read'])->name('read');
+

@@ -11,7 +11,8 @@ use Illuminate\Support\Str;
 class ServicesController extends Controller
 {
     public function show(){
-        $services = Service::where(['status'=>'active'])->orderBy('id','DESC')->limit('10')->get();
+        $services = Service::where(['status'=>'active'])->orderBy('id','DESC')->get();
         return view('frontend.layouts.services',compact(['services']));
     }
 }
+

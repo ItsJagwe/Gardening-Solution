@@ -37,7 +37,7 @@
             <a class="nav-link" href= "/index">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page"href="/services">Services</a>
+            <a class="nav-link" href="/services">Services</a>
           </li>
           
         </ul>
@@ -46,11 +46,35 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Profile
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
-              <li><a class="dropdown-item" href="order.html">Orders</a></li>
-            </ul>
+            
+              @auth
+    
+    
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="order.html">Orders</a></li>
+                <li>
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                   {{ __('Logout') }}
+               </a>
+  
+               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                   @csrf
+               </form>
+              </li>
+              </ul>
+            </li>
+           
+              @else
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{{ 'user/auth' }}">Login & Register</a></li>
+              </ul>
+              @endauth
           </li>
+    
+            
           <li class="nav-item">
             <a class="nav-link" href="/about" tabindex="-1" >About Us </a>
           </li>
