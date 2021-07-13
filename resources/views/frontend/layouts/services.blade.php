@@ -79,7 +79,7 @@
           </ul>
         </div>
       </div>
-    </nav>>
+    </nav>
   
       <!--services-->
    
@@ -93,7 +93,7 @@
                         <h4 class="pt-2">{{$serv->title}}</h4>
                         <h5>Rs {{$serv->price}}</h5>
                         <ul class="social-icons d-flex justify-content-center">
-                          <li style="--i:1"> <a href="#"> <span class="fab fa-gratipay"></span> </a> </li>
+                          <li style="--i:1"> <a href="#"> <span class="fa fa-plus-circle"></span> </a> </li>
                           
                       </ul>
                   </div>

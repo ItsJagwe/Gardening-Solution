@@ -79,34 +79,42 @@
    
     
     <!--Profile-->
-    <div class="container rounded bg-white mt-5 mb-5">
+      <div class="container rounded bg-white mt-5 mb-5">
+        @php
+        $user=\App\Models\User::where('id',$user->id)->first();
+      @endphp
+        <form action="{{ route('update',$user->id) }}" method="post" enctype="multipart/form-data">
+        @csrf
+                  
         <div class="row">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Jagwe</span><span class="text-black-50">jagwe@gardeningsolution.com</span><span> </span></div>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                  <span class="font-weight-bold">{{$user->full_name}}</span><span class="text-black-50">{{$user->email}}</span><span> </span></div>
             </div>
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile Settings</h4>
+                        <h4 class="text-right">User Details</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">Full Name</label><input type="text" class="form-control" placeholder="Enter Your Full Name" value=""></div>
+                        <div class="col-md-6"><div class="form-group"><label class="labels">Full Name</label><input type="text" class="form-control" placeholder="{{$user->full_name}}" name="full_name"></div></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="Enter phone number" value=""></div>
-                        <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="Enter address line" value=""></div>
-                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="Enter email id" value=""></div>
-                       
+                        <div class="col-md-12"><div class="form-group"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="{{$user->phone}}" name="phone"></div></div>
+                        <div class="col-md-12"><div class="form-group"><label class="labels">Address</label><textarea name="address" id="address" cols="20" rows="5" class="form-control" placeholder="{{$user->address}}" name="address"></textarea></div></div>
+                        
                     </div>
                    
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
                 </div>
             </div>
             
         </div>
     </div>
     </div>
-    </div>  
+  </form>
+  </div>  
+    
     
    <!-- Footer -->    
    <footer class="text-center text-white" style="background-color: #212529;">
