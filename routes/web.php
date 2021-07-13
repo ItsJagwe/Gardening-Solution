@@ -44,10 +44,12 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function()
     Route::get('servicedelete/{id}',[ServiceController::class,'destroy']);
 });
 
+//customer 
 Route::group(['prefix'=>'customer','middleware'=>'auth','customer'],function()
 {
     Route::get('/',[\App\Http\Controllers\AdminController::class,'customer'])->name('customer');
     Route::post('/update/{id}',[IndexController::class,'update'])->name('update');
+    Route::post('/cpass/{id}',[IndexController::class,'cpass'])->name('cpass');
 
 });
 
@@ -57,6 +59,8 @@ Route::get('/index',[\App\Http\Controllers\Frontend\IndexController::class,'inde
 Route::get('/user',[\App\Http\Controllers\Frontend\IndexController::class,'user'])->name('user');
 Route::get('/services',[\App\Http\Controllers\Frontend\ServicesController::class,'show'])->name('show');
 Route::get('/about',[\App\Http\Controllers\Frontend\AboutController::class,'read'])->name('read');
+Route::get('/chpass',[\App\Http\Controllers\Frontend\IndexController::class,'chpass'])->name('chpass');
+
 
 
 

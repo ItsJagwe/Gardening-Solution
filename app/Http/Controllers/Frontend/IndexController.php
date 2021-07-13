@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+
 
 class IndexController extends Controller
 {
@@ -61,6 +63,43 @@ class IndexController extends Controller
         }
     }
 
+    public function cpass(Request $request, $id)
+    {
+        $this->validate($request,[
+            'oldpassword'=>'nullable|min:4',
+            'newpassword'=>'nullable|min:4',
+        ]);
+
+        $hashpassword=Auth::user()->password;
+
+        if(Hash::check($request->oldpassword,$hashpassword))
+        {
+            if(!Hash::check($request->newpassword,$hashpassword))
+            {
+                User::where('id',$id)->update(['password'=>Hash::make($request->newpassword)]);
+
+                return redirect()->route('index')->with('success','Successfully Registered');
+            }
+            else{
+                return back()->with('error','new password can not be same with old password');
+            }
+        }
+        else{
+            return back()->with('error','old password does not match');
+        }
     }
+
+    public function chpass()
+    {
+        $user=Auth::user();
+
+            return view('frontend.layouts.uppass',compact('user'));
+
+    }
+
+
+
+
+}
 
 
