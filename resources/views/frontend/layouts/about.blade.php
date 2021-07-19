@@ -25,64 +25,71 @@
 <body>
 
     
-   <!-- Navbar-->
-   <nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
-    <div class="container-fluid ">
-      <a class="navbar-brand" href="/index">Gardening Solution</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href= "/index">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/services">Services</a>
-          </li>
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
+  <div class="container-fluid ">
+    <a class="navbar-brand" href="/index">Gardening Solution</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href= "/index">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/services">Services</a>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
           
-        </ul>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Profile
+          <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" id="{{Auth::user()->id}}" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class=" d-none d-lg-inline text-gray-600 medium">{{Auth::user()->full_name}}</span>
+               
             </a>
-            
-              @auth
-    
-    
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
-                <li><a class="dropdown-item" href="order.html">Orders</a></li>
-                <li>
-                  <a class="dropdown-item" href="{{ route('logout') }}"
-                  onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                   {{ __('Logout') }}
-               </a>
+         
+            @auth
   
-               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                   @csrf
-               </form>
-              </li>
-              </ul>
+  
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
+              <li><a class="dropdown-item" href="order.html">Orders</a></li>
+              <li><a class="dropdown-item" href="/chpass">Change Password</a></li>
+              <li>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                 {{ __('Logout') }}
+             </a>
+
+             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                 @csrf
+             </form>
             </li>
-           
-              @else
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{ 'user/auth' }}">Login & Register</a></li>
-              </ul>
-              @endauth
+            </ul>
           </li>
-    
-            
-          <li class="nav-item">
-            <a class="nav-link" href="/about" tabindex="-1" >About Us </a>
-          </li>
-        </ul>
-      </div>
+         
+            @else
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{{ 'user/auth' }}">Login & Register</a></li>
+            </ul>
+            @endauth
+        </li>
+  
+        
+        <li class="nav-item">
+          <a class="nav-link active" href="/about" tabindex="-1" >About Us </a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
+
+
     <!--main content--> 
   <div class="aboutus-area">
     <div class="container">
@@ -91,10 +98,15 @@
           <div class="aboutus-content ">
             <h1>About <span>Gardening Solution</span></h1>
             <h4>Company Details</h4>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has oots in a piece of
-              classitin literature from 45 BC, making it over 2000 years old. Richard McClint professor at Hamden
-              dney College irginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum
-              passage, and going through the cites of the word in classical literature.</p>
+            <p>Gardening Solution is a business
+              of spreading the joys and rewards of gardening,
+              because gardening nourishes the body,
+              elevates the spirit, builds community,
+              and makes the world a better place.
+              We can assure you that though our company will grow,
+              but we will remain passionately committed to providing our services,
+              earth-friendly resources that will help our customers have more fun and
+              success in their gardens and lawns"</p>
 
             <div class="counter ">
 
@@ -123,7 +135,7 @@
           </div>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-6">
-          <div class="aboutus-image float-left hidden-sm"><img src="{{asset("asset/fn/img/garden.jpg")}}" alt=""></div>
+          <div class="aboutus-image float-left hidden-sm"><img src="{{asset("asset/fn/img/garden.png")}}" alt=""></div>
         </div>
 
       </div>

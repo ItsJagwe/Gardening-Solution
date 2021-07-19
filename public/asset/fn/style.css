@@ -397,6 +397,7 @@ body {
     padding-top:120px;
      padding-bottom:120px;
 }
+
 /*-- aboutus Image --*/
 .aboutus-image {
   margin-left: 120px;
@@ -416,7 +417,8 @@ body {
       float: none;
       width: auto; } }
   .aboutus-image img {
-    width: 100%; }
+    width: 100%;
+ }
 
 /*-- aboutus Content --*/
 .aboutus-content h1 {

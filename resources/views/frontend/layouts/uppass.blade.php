@@ -18,64 +18,69 @@
   </head>
   <body>
     
-    <!-- Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
-      <div class="container-fluid ">
-        <a class="navbar-brand" href="/index">Gardening Solution</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href= "/index">Home</a>
+  <!-- Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
+  <div class="container-fluid ">
+    <a class="navbar-brand" href="/index">Gardening Solution</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href= "/index">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/services">Services</a>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          
+          <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" id="{{Auth::user()->id}}" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class=" d-none d-lg-inline text-gray-600 medium">{{Auth::user()->full_name}}</span>
+               
+            </a>
+         
+            @auth
+  
+  
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
+              <li><a class="dropdown-item" href="order.html">Orders</a></li>
+              <li><a class="dropdown-item" href="/chpass">Change Password</a></li>
+              <li>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                 {{ __('Logout') }}
+             </a>
+
+             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                 @csrf
+             </form>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/services">Services</a>
-            </li>
-            
-          </ul>
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Profile
-              </a>
-              
-                @auth
-      
-      
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
-                  <li><a class="dropdown-item" href="order.html">Orders</a></li>
-                  <li>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
-                     {{ __('Logout') }}
-                 </a>
-    
-                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                     @csrf
-                 </form>
-                </li>
-                </ul>
-              </li>
-             
-                @else
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{{ 'user/auth' }}">Login & Register</a></li>
-                </ul>
-                @endauth
-            </li>
-      
-              
-            <li class="nav-item">
-              <a class="nav-link" href="/about" tabindex="-1" >About Us </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+            </ul>
+          </li>
+         
+            @else
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{{ 'user/auth' }}">Login & Register</a></li>
+            </ul>
+            @endauth
+        </li>
+  
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/about" tabindex="-1" >About Us </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
    
     
     <!--Profile-->

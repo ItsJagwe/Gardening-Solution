@@ -43,10 +43,13 @@
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Profile
-            </a>
-            
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" id="{{Auth::user()->id}}" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class=" d-none d-lg-inline text-gray-600 medium">{{Auth::user()->full_name}}</span>
+                 
+              </a>
+           
               @auth
     
     
@@ -75,7 +78,7 @@
               @endauth
           </li>
     
-            
+          
           <li class="nav-item">
             <a class="nav-link" href="/about" tabindex="-1" >About Us </a>
           </li>
@@ -136,17 +139,17 @@
                           <i class="fas fa-building"></i>
                         </div>
                         <h2>Societies</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae ipsam sit consequatur ducimus asperiores quod nobis ad cumque at harum.</p>
+                        <p>We provide full service for every aspect of gardening which will include maintaining and taking care of it. By our services we will make your property more beautiful.</p>
                     </div>
                 </div>
                 <!----->
                 <div class="col-md-4">
                   <div class="story-box overlay shadow">
                       <div class="story-icon">
-                          <i class="fas fa-water"></i>
+                          <i class="fas fa-hands"></i>
                       </div>
-                      <h2>Clean Water</h2>
-                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae ipsam sit consequatur ducimus asperiores quod nobis ad cumque at harum.</p>
+                      <h2>Handling</h2>
+                      <p>If you are one of those who don't have time for your property then don't worry we are here to take care of it.By using our services will surely help us and you too.</p>
                   </div>
               </div>
               <!----->
@@ -156,7 +159,7 @@
                           <i class="fas fa-seedling"></i>
                       </div>
                       <h2>Plants</h2>
-                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae ipsam sit consequatur ducimus asperiores quod nobis ad cumque at harum.</p>
+                      <p>Plants that are residing in your garden and lawns needs good care and professional care and if you are unable to do it then don't worry you've got us.</p>
                   </div>
               </div>
               <!----->
@@ -167,7 +170,7 @@
   <!--- End of Stories Section-->
         
   <!-- Hero Banner Section -->
-    <section class="hero-banner bg-light  py-5">
+  <section class="hero-banner bg-light  py-5">
                   <div class="container">
                       <div class="row row align-items-center">
                           <div class="col-lg-5 offset-lg-1 order-lg-1">
@@ -175,12 +178,12 @@
                           </div>
                           <div class="col-lg-6">
                               <h1 class="mt-3">Maintaining Your Peace</h1>
-                              <p class="lead text-secondary my-5">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
-                              <a href="#" class="btn btn-outline-secondary btn-lg border">Book Now</a>
+                              <p class="lead text-secondary my-5">Here at Gardening Solution, we will help you to maintain your peace which surely resides in your lovely property.Which you can leave on us by using our services. We will surely do our best to make your property look beautful and maintain your peace.</p>
+                              <a href="/services" class="btn btn-outline-secondary btn-lg border">Book Now</a>
                           </div>
                       </div>
                   </div>
-    </section>
+  </section>
   <!-- End Hero Banner Section -->   
      <!--Map--> 
         <section class="hero-banner py-5">
@@ -189,7 +192,7 @@
                 <div class="col-lg-5 offset-lg-1 order-lg-1">
                
                   <h3 class="mt-3">Currently Only Available In Ahmedabad</h3>
-                  <p class="lead text-secondary my-5">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+                  <p class="lead text-secondary my-5">We are new in this era of providing services online. That's why we are currently only available in Ahmedabad. But be assured that we have future plans of expanding our services as far as possible. But for now this is our Home.</p>
               </div>  
               <div class="col-lg-6">
                     <div class="mapouter">
@@ -201,7 +204,7 @@
                   
               </div>
           </div>
-  </section>
+      </section>
        
     <!-- Footer -->    
       <footer class="text-center text-white" style="background-color: #212529;">

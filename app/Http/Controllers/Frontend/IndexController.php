@@ -27,7 +27,7 @@ class IndexController extends Controller
         $data = $request->all();
         $check = $this->create($data);
         if($check){
-            return redirect()->route('index')->with('success','Successfully Registered');
+            return redirect()->route('login')->with('success','Successfully Registered');
         }
         else{
             return back()->with('error','Please Check Your Credentials');

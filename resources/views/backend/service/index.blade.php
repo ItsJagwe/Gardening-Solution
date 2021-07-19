@@ -17,17 +17,8 @@
                     <table class="table">
                         <tr>
                             <th> Services </th>
-                            <th><a href="/admin/service/create" class="btn btn-primary">Add new Service</a></th>
-                        
-                        <!-- search  -->
-                            <form action="#" method="get">
-                                <th><input type="text" class="form-control" name="query" placeholder="search here"></th>
-                                <th><button type="submit" class="btn btn-primary">Search</button></th>
-                            </form>
-                        </tr>
-                        </table>
-                    </div>
-                    
+                            <!--<th><a href="/admin/service/create" class="btn btn-primary">Add new Service</a></th> -->
+               
                     <div class="card-body">
                     
                     

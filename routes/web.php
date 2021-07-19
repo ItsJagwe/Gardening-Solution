@@ -38,6 +38,8 @@ Route::post('user/register',[App\Http\Controllers\Frontend\IndexController::clas
 Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function()
 {
     Route::get('/',[\App\Http\Controllers\AdminController::class,'admin'])->name('admin');
+
+    
     
 //category dashboard
     Route::resource('/service', \App\Http\Controllers\ServiceController::class);

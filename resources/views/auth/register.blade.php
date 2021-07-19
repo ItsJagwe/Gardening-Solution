@@ -71,7 +71,7 @@
 						</div>
 					</div>
 					<div class="text-center mt-5 text-muted">
-						Copyright &copy; 2017-2021 &mdash; Gardening Solution
+						Copyright &copy; 2021 &mdash; Gardening Solution
 					</div>
 				</div>
 			</div>

@@ -21,90 +21,116 @@
   </head>
   <body>
 
-      
-    <!-- Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
-      <div class="container-fluid ">
-        <a class="navbar-brand" href="/index">Gardening Solution</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href= "/index">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/services">Services</a>
-            </li>
-            
-          </ul>
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Profile
-              </a>
-              
-                @auth
-      
-      
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
-                  <li><a class="dropdown-item" href="order.html">Orders</a></li>
-                  <li>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
-                     {{ __('Logout') }}
-                 </a>
-    
-                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                     @csrf
-                 </form>
+       <!-- Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
+          <div class="container-fluid ">
+            <a class="navbar-brand" href="/index">Gardening Solution</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href= "/index">Home</a>
                 </li>
-                </ul>
-              </li>
-             
-                @else
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{{ 'user/auth' }}">Login & Register</a></li>
-                </ul>
-                @endauth
-            </li>
-      
-              
-            <li class="nav-item">
-              <a class="nav-link" href="/about" tabindex="-1" >About Us </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  
-      <!--services-->
-   
-    <div class="container">
-        <div class="row">
-      @foreach ($services as $serv)
-            <div class="col-lg-4">
-                <div class="card p-0">
-                    <div class="card-image"> <img src="/photos/{{$serv->photo}}" alt="{{$serv->title}}"> </div>
-                    <div class="card-content d-flex flex-column align-items-center">
-                        <h4 class="pt-2">{{$serv->title}}</h4>
-                        <h5>Rs {{$serv->price}}</h5>
-                        <ul class="social-icons d-flex justify-content-center">
-                          <li style="--i:1"> <a href="#"> <span class="fa fa-plus-circle"></span> </a> </li>
-                          
-                      </ul>
-                  </div>
-                </div>
+                <li class="nav-item">
+                  <a class="nav-link active" href="/services">Services</a>
+                </li>
+                
+              </ul>
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                  
+                  <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" id="{{Auth::user()->id}}" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class=" d-none d-lg-inline text-gray-600 medium">{{Auth::user()->full_name}}</span>
+                      
+                    </a>
+                
+                    @auth
+          
+          
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
+                      <li><a class="dropdown-item" href="order.html">Orders</a></li>
+                      <li><a class="dropdown-item" href="/chpass">Change Password</a></li>
+                      <li>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                    </li>
+                    </ul>
+                  </li>
+                
+                    @else
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ 'user/auth' }}">Login & Register</a></li>
+                    </ul>
+                    @endauth
+                </li>
+          
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="/about" tabindex="-1" >About Us </a>
+                </li>
+              </ul>
             </div>
-          @endforeach
+          </div>
+        </nav>
+  
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="container">
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th>Services</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($services as $serv)
+                    <tr>
+                      <td>{{$serv->title}}</td>        
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+              
+            </div>
+            <div class="col-lg-8">
+              <div class="row">
+                @foreach ($services as $serv)
+                 <div class="col-lg-3">
+                 
+                  <div class="card p-0">
+                      <div class="card-image"> <img src="/photos/{{$serv->photo}}" alt="{{$serv->title}}"> </div>
+                      <div class="card-content d-flex flex-column align-items-center">
+                          <h4 class="pt-2">{{$serv->title}}</h4>
+                          <h5>Rs {{$serv->price}}</h5>
+                          <ul class="social-icons d-flex justify-content-center">
+                            <li style="--i:1"> <a href="#"> <span class="fa fa-plus-circle"></span> </a> </li>
+                            
+                        </ul>
+                    </div>
+                  </div>
+                 </div>
+                 @endforeach
+              </div>
+            </div>
         </div>
       </div>
   
   
-<!-- Footer -->    
+    <!-- Footer -->    
     <footer class="text-center text-white" style="background-color: #212529;">
             <!-- Grid container -->
             <div class="container pt-4">
