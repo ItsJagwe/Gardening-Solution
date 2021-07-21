@@ -24,9 +24,8 @@
 
 <body>
 
-    
-<!-- Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
+ <!-- Navbar-->
+ <nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
   <div class="container-fluid ">
     <a class="navbar-brand" href="/index">Gardening Solution</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +43,6 @@
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">
-          
           <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" id="{{Auth::user()->id}}" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,7 +55,7 @@
   
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
-              <li><a class="dropdown-item" href="order.html">Orders</a></li>
+              <li><a class="dropdown-item" href="/order">Orders</a></li>
               <li><a class="dropdown-item" href="/chpass">Change Password</a></li>
               <li>
                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -82,7 +80,7 @@
   
         
         <li class="nav-item">
-          <a class="nav-link active" href="/about" tabindex="-1" >About Us </a>
+          <a class="nav-link" href="/about" tabindex="-1" >About Us </a>
         </li>
       </ul>
     </div>

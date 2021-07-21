@@ -115,9 +115,9 @@
                       <div class="card-image"> <img src="/photos/{{$serv->photo}}" alt="{{$serv->title}}"> </div>
                       <div class="card-content d-flex flex-column align-items-center">
                           <h4 class="pt-2">{{$serv->title}}</h4>
-                          <h5>Rs {{$serv->price}}</h5>
+                          <h5>₹{{$serv->price}}/per day</h5>
                           <ul class="social-icons d-flex justify-content-center">
-                            <li style="--i:1"> <a href="#"> <span class="fa fa-plus-circle"></span> </a> </li>
+                            <li style="--i:1"> <a href="{{ "order/".$serv['id'] }}"> <span class="fa fa-plus-circle"></span> </a> </li>
                             
                         </ul>
                     </div>

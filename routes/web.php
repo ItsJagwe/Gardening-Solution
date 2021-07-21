@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\ServicesController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\AboutController;
+use App\Http\Controllers\Frontend\OrderController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User; 
 
@@ -55,14 +56,13 @@ Route::group(['prefix'=>'customer','middleware'=>'auth','customer'],function()
 
 });
 
-
 //User frontend
 Route::get('/index',[\App\Http\Controllers\Frontend\IndexController::class,'index'])->name('index');
 Route::get('/user',[\App\Http\Controllers\Frontend\IndexController::class,'user'])->name('user');
 Route::get('/services',[\App\Http\Controllers\Frontend\ServicesController::class,'show'])->name('show');
 Route::get('/about',[\App\Http\Controllers\Frontend\AboutController::class,'read'])->name('read');
 Route::get('/chpass',[\App\Http\Controllers\Frontend\IndexController::class,'chpass'])->name('chpass');
-
-
+Route::resource('/orderr',\App\Http\Controllers\Frontend\OrderController::class);
+Route::get('/order/{id}',[\App\Http\Controllers\Frontend\OrderController::class,'ord']);
 
 

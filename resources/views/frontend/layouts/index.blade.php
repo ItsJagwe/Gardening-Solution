@@ -55,7 +55,7 @@
     
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
-                <li><a class="dropdown-item" href="order.html">Orders</a></li>
+                <li><a class="dropdown-item" href="/order">Orders</a></li>
                 <li><a class="dropdown-item" href="/chpass">Change Password</a></li>
                 <li>
                   <a class="dropdown-item" href="{{ route('logout') }}"

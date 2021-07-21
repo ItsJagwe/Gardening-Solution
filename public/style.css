@@ -5,6 +5,7 @@
 .navbar {
     color: #FFFFFF;
     background-color: #212529;
+    
 }
 
 /*logo center*/
@@ -15,6 +16,7 @@
 	left: 50%;
 	transform: translateX(-50%);
 	top: 18px;
+    
 }
 
 /* Dropdown menu background color*/

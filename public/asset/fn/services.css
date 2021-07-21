@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif
+ 
 }
 
 body {
@@ -91,7 +91,7 @@ body {
 .card .card-content h5 {
     transition: 0.5s;
     font-weight: 200;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     letter-spacing: 2px
 }
 
