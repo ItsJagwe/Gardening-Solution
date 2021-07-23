@@ -97,5 +97,11 @@ class IndexController extends Controller
 
     }
 
-    
+    public function summ()
+    {
+
+            return view('frontend.layouts.summary');
+
+    }
+
 }

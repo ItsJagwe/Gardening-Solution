@@ -24,8 +24,9 @@ class CreateOrdersTable extends Migration
             $table->string('pack_type');
             $table->string('email');
             $table->string('payment');
+            $table->string('service_title');
             $table->unsignedBigInteger('service_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_name');
 
             //foreign key
             $table->foreign('service_id')->reference('id')->on('services')->onDelete('cascade');

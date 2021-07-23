@@ -39,7 +39,8 @@ Route::post('user/register',[App\Http\Controllers\Frontend\IndexController::clas
 Route::group(['prefix'=>'admin','middleware'=>'auth','admin'],function()
 {
     Route::get('/',[\App\Http\Controllers\AdminController::class,'admin'])->name('admin');
-
+    Route::resource('/detail',\App\Http\Controllers\AdminController::class);
+    Route::get('orderdelete/{id}',[\App\Http\Controllers\AdminController::class,'destroy']);
     
     
 //category dashboard
@@ -53,7 +54,7 @@ Route::group(['prefix'=>'customer','middleware'=>'auth','customer'],function()
     Route::get('/',[\App\Http\Controllers\AdminController::class,'customer'])->name('customer');
     Route::post('/update/{id}',[IndexController::class,'update'])->name('update');
     Route::post('/cpass/{id}',[IndexController::class,'cpass'])->name('cpass');
-
+   
 });
 
 //User frontend
@@ -64,5 +65,7 @@ Route::get('/about',[\App\Http\Controllers\Frontend\AboutController::class,'read
 Route::get('/chpass',[\App\Http\Controllers\Frontend\IndexController::class,'chpass'])->name('chpass');
 Route::resource('/orderr',\App\Http\Controllers\Frontend\OrderController::class);
 Route::get('/order/{id}',[\App\Http\Controllers\Frontend\OrderController::class,'ord']);
+Route::get('/summ',[OrderController::class,'orddetails'])->name('orddetails');
+
 
 

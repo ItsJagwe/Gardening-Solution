@@ -22,7 +22,7 @@
   <body>
 
        <!-- Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
+     <nav class="navbar navbar-expand-lg navbar-dark shadow p-3">
           <div class="container-fluid ">
             <a class="navbar-brand" href="/index">Gardening Solution</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
           
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" href="/user">Edit Profile</a></li>
-                      <li><a class="dropdown-item" href="order.html">Orders</a></li>
+                      <li><a class="dropdown-item" href="/summ">Orders</a></li>
                       <li><a class="dropdown-item" href="/chpass">Change Password</a></li>
                       <li>
                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -83,7 +83,7 @@
               </ul>
             </div>
           </div>
-        </nav>
+    </nav>
   
         <div class="container-fluid">
           <div class="row">

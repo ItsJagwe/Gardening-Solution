@@ -19,6 +19,7 @@
                 <div class="nav_list"> <a href="/admin" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
                     <a href="{{route('service.index')}}" class="nav_link"> <i class='bx bx-clipboard nav_icon'></i> <span class="nav_name">Services</span> </a>
                     <a href="{{route('service.create')}}" class="nav_link"> <i class='bx bx-image-add nav_icon'></i> <span class="nav_name">Add Service</span> </a>
+                    <a href="{{route('detail.index')}}" class="nav_link"> <i class='bx bx-rupee'></i> <span class="nav_name">Orders</span> </a>
                    <a href="{{ route('logout') }}" class="nav_link" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"> <i class='bx bx-lock-open nav_icon'></i> <span class="nav_name">Logout</span> </a>
             

@@ -11,8 +11,7 @@
  
     <!--custom css-->
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../order.css">
-
+  
     <!--font awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
@@ -83,80 +82,63 @@
       </div>
     </div>
   </nav>
-      
 
 
- <!-- profile start -->
- @php
- $serv=\App\Models\Service::where('id',$serv->id)->first();
-@endphp
-<div class="wrapper rounded bg-white">
-  <form action="{{ route('orderr.store') }}" method="post" enctype="multipart/form-data">      
-    @csrf  
- <div class="h3">Order Form</div>
- <div class="form">
-     <div class="row">
-         <div class="col-md-6 mt-md-0 mt-3"> 
-             <label>Service Id</label> 
-             <input type="text" class="form-control"  name="service_id" value="{{ $serv->id }}" placeholder="{{ $serv->id }}" readonly="readonly"> 
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                <table class="table">
+                    <tr>
+                        <th> Orders </th>
+
+                    </tr>
+                    </table>
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-hover table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Email</th>
+                                <th>Package</th>
+                                <th>Payment</th>
+                                <th>Order Date</th>
+                                <th>Flat No</th>
+                                <th>Area</th>
+                                <th>Landmark</th>
+                                <th>Pincode</th>
+                            </tr>
+                        </thead>
+
+
+
+                        @foreach($order as $post)
+                        <tr>
+                            <td>{{$post->id}}</td>
+                            <td>{{$post->email}}</td>
+                            <td>{{$post->pack_type}}</td>
+                            <td>{{$post->payment}}</td>
+                            <td>{{$post->date}}</td>
+                            <td>{{$post->flat}}</td>
+                            <td>{{$post->area}}</td>
+                            <td>{{$post->landmark}}</td>
+                            <td>{{$post->pincode}}</td>
+
+                        </tr>
+                    @endforeach
+                    </table>
+
+                </div>
             </div>
-            <div class="col-md-6 mt-md-0 mt-3">
-            <label>Service Name</label> 
-            <input type="text" class="form-control"  name="service_title" value="{{ $serv->title }}" placeholder="{{ $serv->title }}" readonly="readonly">  
-            </div>
-         
-     </div>
-     <div class="row">
-         <div class="col-md-6 mt-md-0 mt-3"> 
-             <label>User id</label> 
-             <input type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}" placeholder="{{Auth::user()->id}}" readonly="readonly"> 
-         </div>
-         
-         <div class="col-md-6 mt-md-0 mt-3"> <label>Email</label> <input type="email" name="email" value="{{Auth::user()->email}}" class="form-control" placeholder="{{Auth::user()->email}}" readonly="readonly"> </div>
-
-     </div>
-     <div class="row">
-         <div class="col-md-6 mt-md-0 mt-3"> <label>Oder Date</label> <input type="date" name="date" id="picker" class="form-control" required> </div>
-         <div class="col-md-6 mt-md-0 mt-3"> <label>Phone Number</label> <input type="number" name= "phone" value="phone" class="form-control" required> </div>
-     </div>
-
-     <div class="row">
-         <div class="col-md-6 mt-md-0 mt-3"> 
-             <label>Flat/House no, Buliding, Apartment</label> 
-             <input type="text" class="form-control" name= "flat" placeholder="" required> 
-         </div>
-         
-         <div class="col-md-6 mt-md-0 mt-3"> <label>Area,Street,Sector,Village</label> <input type="text" name= "area" class="form-control" required> </div>
-
-     </div>
-
-     <div class="row">
-         <div class="col-md-6 mt-md-0 mt-3"> 
-             <label>Landmark</label> 
-             <input type="text" class="form-control" name= "landmark" placeholder="" required> 
-         </div>
-         
-         <div class="col-md-6 mt-md-0 mt-3"> <label>Pincode</label> <input type="number" name= "pincode" class="form-control" required> </div>
-
-     </div>
-
-     <div class="row">
-     <div class="col-md-6 mt-md-0 mt-3"> <label>Package</label> <select id="sub" name= "pack_type" required>
-             <option value="" selected hidden>Choose Option</option>
-             <option value="1-Day (₹{{ ($serv->price) }})">1-Day (₹{{ ($serv->price) }})</option>
-             <option value="1-month (₹{{ ($serv->price*30-200) }}) 200 off">1-month (₹{{ ($serv->price*30-200) }} ) 200 off</option>
-             <option value="6-month (₹{{ ($serv->price*180-500) }}) 500 off">6-month (₹{{ ($serv->price*180-500) }}) 500 off</option>
-         </select> </div>
-     <div class="col-md-6 mt-md-0 mt-3"> <label>Payment Method</label> <input type="text" class="form-control" name="payment" value="Cash On Delivery" placeholder="Cash On Delivery" readonly = "readonly" > </div>
-     
-     <button type="submit" class="btn btn-primary mt-3">Order</button>
-
- </div>
- </div>
-</form>
+        </div>
+    </div>
 </div>
-<!-- end profile body-->
 
+  
   <!-- Footer -->    
   <footer class="text-center text-white" style="background-color: #212529;">
     <!-- Grid container -->

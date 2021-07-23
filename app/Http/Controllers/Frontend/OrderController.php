@@ -50,4 +50,14 @@ class OrderController extends Controller
             return back()->with('error','something went wrong');
         }
     }
+
+    public function orddetails()
+    {
+        $user = Auth::user()->id;
+
+        $order=DB::table('orders')->where('user_id','LIKE','%'.$user.'%')->paginate(10);
+            return view('frontend.layouts.summary',compact('order'));
+
+    }
 }
+
